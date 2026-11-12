@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import type { Dispatch, SetStateAction } from "react";
 import {
   Bell, Bookmark, Check, ChevronDown, Compass, Heart, Home, ImagePlus, Link2,
   MessageCircle, MoreHorizontal, Plus, Search, Send, Settings2, Sparkles,
@@ -213,7 +214,7 @@ function ExplorePage({ onNotify }: { onNotify: (message: string) => void }) {
   return <section className="page-content subpage"><div className="eyebrow">WANDER A LITTLE</div><h1>Find your<br /><em>next thing.</em></h1><p className="subpage-intro">Ideas, people and perspectives worth discovering.</p><div className="explore-search"><Search size={18} /><input placeholder="Search people, topics and conversations" /></div><div className="feed-toolbar"><div><span className="section-kicker">EXPLORE BY INTEREST</span><h2>Topics for you</h2></div></div><div className="topic-grid">{topics.map((topic, i) => <button key={topic} className={"topic-card topic-" + i} onClick={() => onNotify("Exploring " + topic + " is coming soon.")}><span>0{i + 1}</span><strong>{topic}</strong><ArrowUpRight size={18} /></button>)}</div><div className="explore-feature"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200&q=85" alt="A warm creative workspace" /><div><span className="section-kicker">THE SYNERA JOURNAL</span><h2>Curiosity looks<br /><em>good on you.</em></h2><p>A collection of ideas from across the community.</p><button onClick={() => onNotify("The journal is coming soon.")}>Discover stories <ArrowUpRight size={15} /></button></div></div></section>;
 }
 
-function MessagesPage({ active, setActive, sent, setSent, draft, setDraft }: { active: string; setActive: (id: string) => void; sent: Record<string, string[]>; setSent: React.Dispatch<React.SetStateAction<Record<string, string[]>>>; draft: string; setDraft: (value: string) => void }) {
+function MessagesPage({ active, setActive, sent, setSent, draft, setDraft }: { active: string; setActive: (id: string) => void; sent: Record<string, string[]>; setSent: Dispatch<SetStateAction<Record<string, string[]>>>; draft: string; setDraft: (value: string) => void }) {
   const people = [
     { id: "d1", name: "Elena Rivera", handle: "elenar", avatar: "https://i.pravatar.cc/100?img=47", last: "That sounds lovely. Let's do it!", time: "2m", unread: 2 },
     { id: "d2", name: "Noah Williams", handle: "noahw", avatar: "https://i.pravatar.cc/100?img=11", last: "Sent you the references.", time: "1h", unread: 0 },
